@@ -5,7 +5,8 @@ const http = require('http');
 const options = {
   hostname: '192.168.1.102',
   port: 7071,
-  path: '/api/gethivedata?id=1',
+  //path: '/api/gethivedata?id=1',
+  path: '/api/gethivedata2',
   method: 'GET'
 }
 
