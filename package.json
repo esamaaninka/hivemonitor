@@ -1,0 +1,26 @@
+{
+  "name": "hivemonitor",
+  "version": "1.0.0",
+  "description": "backend for hivemonitor",
+  "main": "index.js",
+  "scripts": {
+    "test": "\"echo \\\"Error: no test specified\\\" && exit 1\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/esamaaninka/hivemonitor.git"
+  },
+  "keywords": [
+    "hive",
+    "monitor",
+    "backend",
+    "rest",
+    "mongodb"
+  ],
+  "author": "Esa Maaninka",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/esamaaninka/hivemonitor/issues"
+  },
+  "homepage": "https://github.com/esamaaninka/hivemonitor#readme"
+}
