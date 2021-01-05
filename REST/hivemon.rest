@@ -1,0 +1,72 @@
+@PORT=3001
+
+// copy-paste the token from the login response
+//@AUTHTOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkpvcHBlIiwiaWQiOiI1ZmJmZjI0MDRkYmY3YzM4YzAyNWJmMDkiLCJpYXQiOjE2MDY1NTE3ODl9.7JyI00cZyDayjd63_niC3STA2HwPVJ8CMKyDx0Hr9NE
+################################
+
+// LOGIN
+// saves the token from the response
+# @name gotToken
+POST http://localhost:{{PORT}}/api/login
+Content-Type: application/json
+
+{
+	"username": "Jape",
+	"password": "salasana"
+}
+
+##########################################################
+### HIVEs
+##########################################################
+###
+
+# GET all hives listed
+GET http://localhost:{{PORT}}/api/hives
+
+### GET a hive 
+GET http://localhost:{{PORT}}/api/hives/{{ID}}
+
+### 
+# Delete a hive by id (TODO) 
+DELETE http://localhost:{{PORT}}/api/hives/{{ID}}
+
+### Create a hive
+### POST
+POST http://localhost:{{PORT}}/api/hives
+Content-Type: application/json
+
+{
+	"hivename": "Vesilahti 03",
+    "queen": "blue", 
+    "broodSize": 3, 
+    "honeySize": 2  
+}
+
+##########################################################
+### HIVELOGS
+##########################################################
+###
+# POST send hive log
+POST http://localhost:{{PORT}}/api/hivelogs
+Content-Type: application/json
+
+{  
+    "title": "Log: ", 
+    "hive_temp": 35,
+    "hive_humidity": 40, 
+    "amb_temp": 22, 
+    "amp_humidity": 55,
+    "weight": 122,
+    "voltage": 12.1,
+    "note": "Test log",
+    "hivename": "Halkivaha 01"
+}
+
+### 
+# GET all hivelogs (TODO Populate/paging)
+
+GET http://localhost:{{PORT}}/api/hivelogs
+
+###
+# GET hivelogs by hivename
+GET http://localhost:{{PORT}}/api/hivelogs/Vesilahti 01
