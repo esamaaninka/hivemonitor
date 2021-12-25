@@ -56,7 +56,7 @@ hivelogRouter.post('/api/hivelogs', async (request, response) => {
 
   const hive = await Hive.findOne({ hivename: request.body.hivename })
   //console.log('Hivelog POST from hive: ', hive)
-  //console.log('Hivelog POSTing: ', request.body)
+  console.log('Hivelog POSTing: ', request.body)
 
   const hivelog = new HiveLog({
     title: request.body.title,
@@ -67,6 +67,7 @@ hivelogRouter.post('/api/hivelogs', async (request, response) => {
     weight: request.body.weight,
     voltage: request.body.voltage,
     note: request.body.note,
+    timestamp: request.body.timestamp,
     hive: hive._id
   })
 

@@ -18,6 +18,7 @@ const hivelogSchema = mongoose.Schema({
   weight: Number,
   voltage: Number,
   note: String,
+  timestamp: String,
 
   hive: {
     type: mongoose.Schema.Types.ObjectId,

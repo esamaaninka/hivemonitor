@@ -15,8 +15,11 @@ const unknownEndpoint = (request, response) => {
 
 const errorHandler = (error, request, response, next) => {
   logger.error(error.message)
-
-  if (error.name === 'CastError' && error.kind === 'ObjectId') {
+  if(error instanceof SyntaxError){ // jsonbodyparser syntax error Handle SyntaxError here.
+    console.log('json bodyparser data invalid')
+    return response.status(500).send({data : "Invalid data"})
+  }
+  else if (error.name === 'CastError' && error.kind === 'ObjectId') {
     return response.status(400).send({ error: 'malformatted id' })
   } else if (error.name === 'ValidationError') {
     console.log('Saadaanko puuttuva urlista virhettä tähän? ')

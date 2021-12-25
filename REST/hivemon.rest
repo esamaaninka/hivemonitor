@@ -1,4 +1,11 @@
-@PORT=3001
+
+# .env variables, remember to make a link to root .env
+# "ln -s ../.env .env"
+@PORT={{$dotenv httpPORT}}
+
+### use the timeformat used by raspihive
+@timestamp = {{$datetime "YYYY-MM-DD hh:mm:ss"}}
+
 
 // copy-paste the token from the login response
 //@AUTHTOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkpvcHBlIiwiaWQiOiI1ZmJmZjI0MDRkYmY3YzM4YzAyNWJmMDkiLCJpYXQiOjE2MDY1NTE3ODl9.7JyI00cZyDayjd63_niC3STA2HwPVJ8CMKyDx0Hr9NE
@@ -36,7 +43,7 @@ POST http://localhost:{{PORT}}/api/hives
 Content-Type: application/json
 
 {
-	"hivename": "Vesilahti 03",
+	"hivename": "Vesilahti 98",
     "queen": "blue", 
     "broodSize": 3, 
     "honeySize": 2  
@@ -46,19 +53,21 @@ Content-Type: application/json
 ### HIVELOGS
 ##########################################################
 ###
-# POST send hive log
+
+#POST send hive log
 POST http://localhost:{{PORT}}/api/hivelogs
 Content-Type: application/json
 
 {  
-    "title": "Log: ", 
-    "hive_temp": 35,
+    "title": "Log: test data from REST client", 
+    "hive_temp": 34,
     "hive_humidity": 40, 
     "amb_temp": 22, 
     "amp_humidity": 55,
     "weight": 122,
     "voltage": 12.1,
     "note": "Test log",
+    "timestamp": "{{timestamp}}",
     "hivename": "Halkivaha 01"
 }
 
