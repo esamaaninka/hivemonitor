@@ -17,7 +17,7 @@ In production envs if using Heroku, Azure the https stuff would be taken care of
 
 
 
-Features:
+Features: 
 DATA and methods
 1 hive schema - ok
 2 hivelog schema - ok 
