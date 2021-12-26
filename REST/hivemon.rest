@@ -26,11 +26,11 @@ Content-Type: application/json
 ### HIVEs
 ##########################################################
 ###
-
 # GET all hives listed
 GET http://localhost:{{PORT}}/api/hives
 
-### GET a hive 
+### GET a hive by ID (TODO)
+@ID={{"5fedb8d8130ad571f5229a93"}}
 GET http://localhost:{{PORT}}/api/hives/{{ID}}
 
 ### 
@@ -43,7 +43,7 @@ POST http://localhost:{{PORT}}/api/hives
 Content-Type: application/json
 
 {
-	"hivename": "Vesilahti 98",
+	"hivename": "Vesilahti",
     "queen": "blue", 
     "broodSize": 3, 
     "honeySize": 2  
@@ -60,7 +60,7 @@ Content-Type: application/json
 
 {  
     "title": "Log: test data from REST client", 
-    "hive_temp": 34,
+    "hive_temp": 36.6,
     "hive_humidity": 40, 
     "amb_temp": 22, 
     "amp_humidity": 55,
@@ -68,7 +68,7 @@ Content-Type: application/json
     "voltage": 12.1,
     "note": "Test log",
     "timestamp": "{{timestamp}}",
-    "hivename": "Halkivaha 01"
+    "hivename": "Vesilahti"
 }
 
 ### 
@@ -78,4 +78,4 @@ GET http://localhost:{{PORT}}/api/hivelogs
 
 ###
 # GET hivelogs by hivename
-GET http://localhost:{{PORT}}/api/hivelogs/Vesilahti 01
+GET http://localhost:{{PORT}}/api/hivelogs/Halkivaha 02

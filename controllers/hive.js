@@ -1,7 +1,7 @@
 //const bcrypt = require('bcrypt')
 const hiveRouter = require('express').Router()
 const Hive = require('../models/hive')
-const Hivelog = require('../models/hivelog')
+//const Hivelog = require('../models/hivelog')
 
 hiveRouter.get('/api/hives', async (request, response) => {
   const hives = await Hive
@@ -15,7 +15,7 @@ hiveRouter.post('/api/hives', async (request, response, next) => {
   const body = request.body
 
   //console.log("password: ", body.password, body.password.length)
-/*
+  /*
   if(body.password.length < 3) {
     return response.status(400).json({ error: 'password too short, min lenght of 3 required' })
   }
@@ -28,12 +28,12 @@ hiveRouter.post('/api/hives', async (request, response, next) => {
     name: body.name,
     passwordHash,
   })
-*/
+  */
   const hive = new Hive({
     hivename: body.hivename,
     queen: body.queen, // or enum Red, Yellow etc.
     broodSize: body.broodSize,
-    honeySize: body.honeySize  
+    honeySize: body.honeySize
   })
   // tämä ei toimi mongoose validator error kanssa, jää "jumiin"
   //  const savedUser = await user.save()

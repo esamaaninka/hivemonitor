@@ -15,30 +15,27 @@ const getTokenFrom = request => {
 */
 
 hivelogRouter.get('/api/hivelogs/', async (request, response) => {
-  const hivelogs = await HiveLog
+  // const hivelogs = await HiveLog
+  HiveLog
     .find({})
-    //.sort({'likes': 'descending'})
-    .populate('hive', { hivename: 1, id: 1 })
-
-  response.json(hivelogs)
+    .populate('hive', { hivename: 1, queen: 1 })
+    .then(c => {
+      response.json(c.map(p => p.toJSON()))
+    })
+  //response.json(hivelogs)
 })
 
 hivelogRouter.get('/api/hivelogs/:hivename', async (request, response, next) => {
-  console.log('hivelogRouter GET by name: ', request.params.hivename)
+  //console.log('hivelogRouter GET by name: ', request.params.hivename)
 
-  //const hive = await Hive.aggregate([{ $match: { 'hive.hivename': request.params.hivename } }])
-  const hives = await Hive.find({lean :true})
-  console.log('hive: ', hives)
+  // get first all logs, populate with hivename, and filter with given name
 
   HiveLog
     .find({})
-    .then(hivelog => {
-      console.log('found hive: ', hivelog)
-      if(hivelog){
-        response.json(hivelog.toJSON())
-      } else {
-        response.status(404).end()
-      }
+    .populate('hive', { hivename: 1 })
+    .then(hh => {
+      //console.log('hh', hh.filter(h => h.hive.hivename === request.params.hivename))
+      response.json(hh.filter(h => h.hive.hivename === request.params.hivename))
     })
     .catch(error => next(error))
 })
