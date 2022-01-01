@@ -1,5 +1,6 @@
 //const bcrypt = require('bcrypt')
 const hiveRouter = require('express').Router()
+const res = require('express/lib/response')
 const Hive = require('../models/hive')
 //const Hivelog = require('../models/hivelog')
 
@@ -10,6 +11,17 @@ hiveRouter.get('/api/hives', async (request, response) => {
 
   response.json(hives)
 })
+
+hiveRouter.get('/api/hives/:id', async (request, response, next ) => {
+  console.log('/api/hives/:id got id: ', request.params.id)
+  const hive= await Hive
+    .findById(request.params.id)
+    .then(r => {
+      console.log('found hive: ', r)
+      response.status(200).json(r)
+    })
+    .catch(error => next(error))
+  })
 
 hiveRouter.post('/api/hives', async (request, response, next) => {
   const body = request.body

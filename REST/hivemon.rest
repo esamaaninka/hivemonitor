@@ -30,7 +30,7 @@ Content-Type: application/json
 GET http://localhost:{{PORT}}/api/hives
 
 ### GET a hive by ID (TODO)
-@ID={{"5fedb8d8130ad571f5229a93"}}
+@ID=5fedb8c7130ad571f5229a92
 GET http://localhost:{{PORT}}/api/hives/{{ID}}
 
 ### 
@@ -72,7 +72,7 @@ Content-Type: application/json
 }
 
 ### 
-# GET all hivelogs (TODO Populate/paging)
+# GET all hivelogs (TODO paging)
 
 GET http://localhost:{{PORT}}/api/hivelogs
 
