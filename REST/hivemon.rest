@@ -29,7 +29,7 @@ Content-Type: application/json
 # GET all hives listed
 GET http://localhost:{{PORT}}/api/hives
 
-### GET a hive by ID (TODO)
+### GET a hive by ID
 @ID=5fedb8c7130ad571f5229a92
 GET http://localhost:{{PORT}}/api/hives/{{ID}}
 
@@ -79,3 +79,7 @@ GET http://localhost:{{PORT}}/api/hivelogs
 ###
 # GET hivelogs by hivename
 GET http://localhost:{{PORT}}/api/hivelogs/Halkivaha 02
+
+###
+# Get hivelogs by hive id
+GET http://localhost:{{PORT}}/api/hivelogs/id/{{ID}}

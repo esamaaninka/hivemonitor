@@ -19,9 +19,13 @@ In production envs if using Heroku, Azure the https stuff would be taken care of
 API
 GET, POST
 http://localhost:8080/api/hives 
+http://localhost:8080/api/hives/<ID>
+
 GET, POST
 http://localhost:8080/api/hivelogs
 http://localhost:8080/api/hivelogs/<HIVENAME>
+http://localhost:8080/api/hivelogs/id/<ID>
+
 
 
 

@@ -26,20 +26,34 @@ hivelogRouter.get('/api/hivelogs/', async (request, response) => {
 })
 
 hivelogRouter.get('/api/hivelogs/:hivename', async (request, response, next) => {
-  //console.log('hivelogRouter GET by name: ', request.params.hivename)
+  console.log('hivelogRouter GET by name: ', request.params.hivename)
 
   // get first all logs, populate with hivename, and filter with given name
 
   HiveLog
     .find({})
     .populate('hive', { hivename: 1 })
-    .then(hh => {
-      //console.log('hh', hh.filter(h => h.hive.hivename === request.params.hivename))
-      response.json(hh.filter(h => h.hive.hivename === request.params.hivename))
+    .then(logs => {
+      response.json(logs.filter(l => l.hive.hivename === request.params.hivename))
     })
     .catch(error => next(error))
 })
-
+hivelogRouter.get('/api/hivelogs/id/:id', async (request, response, next) => {
+  
+  HiveLog
+    .find({})
+    .populate('hive', { hivename: 1, id: 1 })
+    .then(logs => {
+      if(logs.length){
+        response.json(logs.filter(l => l.hive.id === request.params.id))
+      }
+      else{
+        console.log('did not find by id') // actually will never come here, if not found with id then returned empty array above
+        response.status(204).end()
+      }
+    })
+    .catch(error => next(error))
+})
 
 hivelogRouter.post('/api/hivelogs', async (request, response) => {
 /*
