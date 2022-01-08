@@ -62,8 +62,12 @@ b3ef897f467cdaf5eddc91e7fc96fe85	Esa Pirkkala lentoas
 
 curl "https://api.openweathermap.org/data/2.5/weather?id=634963&appid=59b78142d618459a21c982b7a368a0f8&units=metric" > weather.json
 
-JSON.sh < weather.json 
-JSON.sh < weather.json > weather.txt
 
 %cat weather.json | jq '.main.temp'
 -> echoes the temp
+
+%jq '.main.temp,.main.humidity' weather.json 
+-10.61
+89
+
+wx.sh parses the data into variables used in "hivetool"
