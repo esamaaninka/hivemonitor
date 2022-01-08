@@ -52,3 +52,18 @@ Server
 GUI
 1 login/front page
 2 basic graphs/tables like hivetool?
+
+-------------------------------------------------------
+/utils
+Weather data
+https://home.openweathermap.org/api_keys
+59b78142d618459a21c982b7a368a0f8	Default
+b3ef897f467cdaf5eddc91e7fc96fe85	Esa Pirkkala lentoas
+
+curl "https://api.openweathermap.org/data/2.5/weather?id=634963&appid=59b78142d618459a21c982b7a368a0f8&units=metric" > weather.json
+
+JSON.sh < weather.json 
+JSON.sh < weather.json > weather.txt
+
+%cat weather.json | jq '.main.temp'
+-> echoes the temp
