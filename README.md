@@ -71,3 +71,9 @@ curl "https://api.openweathermap.org/data/2.5/weather?id=634963&appid=59b78142d6
 89
 
 wx.sh parses the data into variables used in "hivetool"
+
+parse several fields from obj arrays to a txt file
+%jq '.[] |.hive_id,.hive_temp_c,.hive_weight_kgs,.timestamp' hivedata.json > hive.txt
+
+jos WeatherUnderground ei enää toimi, vaihtoehto openweathermap
+%curl "https://api.openweathermap.org/data/2.5/weather?q=Tampere&appid=59b78142d618459a21c982b7a368a0f8&units=metric"
