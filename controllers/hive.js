@@ -4,12 +4,15 @@ const res = require('express/lib/response')
 const Hive = require('../models/hive')
 //const Hivelog = require('../models/hivelog')
 
-hiveRouter.get('/api/hives', async (request, response) => {
+hiveRouter.get('/api/hives', async (request, response, next ) => {
   const hives = await Hive
     .find({})
     .populate('logs', { title: 1, id: 1 })
-
-  response.json(hives)
+    .then(r => { 
+      console.log('Hives: ', r)
+      response.status(200).json(r)
+    })
+    .catch(error => next(error))
 })
 
 hiveRouter.get('/api/hives/:id', async (request, response, next ) => {

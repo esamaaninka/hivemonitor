@@ -4,6 +4,7 @@ var bodyParser = require('body-parser')
 const cors = require('cors')
 const hivelogRouter = require('./controllers/hivelog')
 const hiveRouter = require('./controllers/hive')
+const esp32Router = require('./controllers/esp32')
 //const loginRouter = require('./controllers/login')
 const config = require('./utils/config')
 const logger = require('./utils/logger')
@@ -27,9 +28,15 @@ app.use(cors())
 //app.use(express.static('build')) //NOT BUILT YET
 app.use(express.json())
 app.use(middleware.requestLogger)
+
 app.use('', hivelogRouter)
-app.use('',hiveRouter) // vai pitäiskö tässä olla ('/api/users') kuten notes esimerkissä? miksi yo toimii ilman ?
+app.use('', hiveRouter) // vai pitäiskö tässä olla ('/api/users') kuten notes esimerkissä? miksi yo toimii ilman ?
 //app.use('/api/login', loginRouter)
+app.use('', esp32Router)
+// oltava viimeisenä muuten kaappaa
+app.use('/', (req, res) => {
+    res.status(200).send('Hello, hello')
+})
 
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)

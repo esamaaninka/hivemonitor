@@ -11,7 +11,14 @@ const hiveSchema = new mongoose.Schema({
   },
   queen: String, // or enum Red, Yellow etc.
   broodSize: Number,
-  honeySize: Number
+  honeySize: Number,
+  /* this to be implemented if want to have hive - hivelog "integrated"
+  // so that with hive can populate the hivelog
+  hivelog: [{
+    type:mongoose.Schema.Types.ObjectId,
+    ref: 'HiveLog'
+  }]
+  */
 },{ timestamps: true })
 
 hiveSchema.plugin(uniqueValidator)
